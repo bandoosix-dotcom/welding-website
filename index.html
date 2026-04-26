@@ -330,11 +330,17 @@
   }
 
   .why-block.main {
-    top: 0; left: 0; right: 60px; bottom: 60px;
+    top: 0; left: 0; right: 0; bottom: 0;
     display: flex; flex-direction: column; justify-content: flex-end;
     background:
-      linear-gradient(to top, rgba(13,13,13,0.85), transparent),
-      var(--iron);
+      linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 60%, transparent 100%),
+      repeating-linear-gradient(
+        45deg,
+        var(--iron) 0px,
+        var(--iron) 2px,
+        var(--steel) 2px,
+        var(--steel) 20px
+      );
   }
 
   .why-block.accent {
@@ -803,9 +809,6 @@
         <div class="block-label">R. Charles</div>
         <div class="block-title">CRAFTSMANSHIP YOU CAN TRUST</div>
       </div>
-      <div class="why-block accent">
-        <div class="accent-num">AWS</div>
-        <div class="accent-label">Certified Welders</div>
       </div>
     </div>
     <div>
