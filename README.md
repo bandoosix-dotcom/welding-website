@@ -968,7 +968,7 @@
       </div>
     </div>
 
-    <form class="contact-form" action="https://formspree.io/f/mpqknjpg" method="POST">
+    <form class="contact-form" action="https://formspree.io/f/xeevdlzp" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Full Name</label>
