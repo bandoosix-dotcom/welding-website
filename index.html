@@ -968,24 +968,24 @@
       </div>
     </div>
 
-    <form class="contact-form" onsubmit="handleSubmit(event)">
+    <form class="contact-form" action="https://formspree.io/f/xeevdlzp" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Full Name</label>
-          <input type="text" class="form-input" placeholder="John Smith" required>
+          <input type="text" class="form-input" name="name" placeholder="John Smith" required>
         </div>
         <div class="form-group">
           <label class="form-label">Phone Number</label>
-          <input type="tel" class="form-input" placeholder="+1 (473) 000-0000">
+          <input type="tel" class="form-input" name="phone" placeholder="473-000-0000">
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Email Address</label>
-        <input type="email" class="form-input" placeholder="you@example.com" required>
+        <input type="email" class="form-input" name="email" placeholder="you@example.com" required>
       </div>
       <div class="form-group">
         <label class="form-label">Service Required</label>
-        <select class="form-select form-input">
+        <select class="form-select form-input" name="service">
           <option value="">Select a service...</option>
           <option>Iron Gates &amp; Fencing</option>
           <option>Railing &amp; Burglar Bars</option>
@@ -997,7 +997,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Project Details</label>
-        <textarea class="form-textarea" placeholder="Describe your project — materials, dimensions, timeline, or anything else we should know..."></textarea>
+        <textarea class="form-textarea" name="message" placeholder="Describe your project — materials, dimensions, timeline, or anything else we should know..."></textarea>
       </div>
       <button type="submit" class="btn-primary" style="width:100%; font-size:1rem; padding:1rem;">Send Request →</button>
     </form>
@@ -1018,18 +1018,6 @@
 </footer>
 
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Request Sent!';
-  btn.style.background = '#2d8a4e';
-  setTimeout(() => {
-    btn.textContent = 'Send Request →';
-    btn.style.background = '';
-    e.target.reset();
-  }, 3000);
-}
-
 // Smooth active nav highlighting
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
