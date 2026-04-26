@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R. Charles Welding & Fabricating Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black:   #0d0d0d;
+    --steel:   #1a1a1a;
+    --iron:    #2a2a2a;
+    --smoke:   #3d3d3d;
+    --silver:  #8a8a8a;
+    --light:   #d4d4d0;
+    --white:   #f0ede8;
+    --fire:    #e85d04;
+    --ember:   #f48c06;
+    --spark:   #ffd60a;
+    --glow:    rgba(232,93,4,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--light);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232,93,4,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--fire); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--fire); }
+
+  .nav-cta {
+    background: var(--fire);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    font-weight: 600;
+  }
+  .nav-cta:hover { background: var(--ember); color: var(--black) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 4rem;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(232,93,4,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 75% 60%, rgba(244,140,6,0.08) 0%, transparent 60%);
+  }
+
+  /* animated spark lines */
+  .spark-line {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--fire), transparent);
+    opacity: 0;
+    animation: sparkFall 3s ease-in infinite;
+  }
+  .spark-line:nth-child(1) { left: 62%; height: 120px; animation-delay: 0.3s; }
+  .spark-line:nth-child(2) { left: 66%; height: 80px;  animation-delay: 1.1s; }
+  .spark-line:nth-child(3) { left: 70%; height: 160px; animation-delay: 0.7s; }
+  .spark-line:nth-child(4) { left: 58%; height: 100px; animation-delay: 1.8s; }
+  .spark-line:nth-child(5) { left: 74%; height: 90px;  animation-delay: 2.2s; }
+
+  @keyframes sparkFall {
+    0%   { opacity: 0; transform: translateY(40vh); }
+    20%  { opacity: 0.8; }
+    80%  { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(80vh); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--fire);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 2px;
+    background: var(--fire);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 10vw, 8.5rem);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title .fire-word { color: var(--fire); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--silver);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--fire);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--ember); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--light);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--smoke);
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--fire); color: var(--fire); transform: translateY(-2px); }
+
+  .hero-stats {
+    position: absolute; bottom: 3rem; right: 4rem; z-index: 2;
+    display: flex; gap: 2.5rem;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--fire);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 4rem; }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--fire);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--silver);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--steel); }
+
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem;
+    gap: 2rem; flex-wrap: wrap;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: var(--smoke);
+  }
+
+  .service-card {
+    background: var(--steel);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--fire);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .service-card:hover { background: var(--iron); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    filter: grayscale(0.3);
+  }
+
+  .service-num {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--silver);
+    line-height: 1.65;
+  }
+
+  /* ── WHY US ── */
+  #why { background: var(--black); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .why-visual {
+    position: relative;
+    height: 420px;
+  }
+
+  .why-block {
+    background: var(--steel);
+    border: 1px solid var(--iron);
+    padding: 2rem;
+    position: absolute;
+  }
+
+  .why-block.main {
+    top: 0; left: 0; right: 60px; bottom: 60px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background:
+      linear-gradient(to top, rgba(13,13,13,0.85), transparent),
+      var(--iron);
+  }
+
+  .why-block.accent {
+    bottom: 0; right: 0; width: 220px; height: 200px;
+    background: var(--fire);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+  }
+
+  .why-block.main .block-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fire);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-block.main .block-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .why-block.accent .accent-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .why-block.accent .accent-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,237,232,0.8);
+    margin-top: 0.4rem;
+  }
+
+  .why-points { list-style: none; margin-top: 2rem; }
+
+  .why-point {
+    display: flex; gap: 1rem;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--iron);
+  }
+  .why-point:first-child { border-top: 1px solid var(--iron); }
+
+  .point-icon {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+    background: var(--glow);
+    border: 1px solid rgba(232,93,4,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    margin-top: 0.1rem;
+  }
+
+  .point-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .point-text {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+
+  /* ── PROCESS ── */
+  #process { background: var(--steel); }
+
+  .process-header { margin-bottom: 3.5rem; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    gap: 0;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12%; right: 12%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--fire), transparent);
+  }
+
+  .process-step {
+    padding: 0 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .step-dot {
+    width: 56px; height: 56px;
+    background: var(--black);
+    border: 2px solid var(--fire);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--fire);
+    position: relative; z-index: 2;
+    transition: background 0.2s;
+  }
+  .process-step:hover .step-dot { background: var(--fire); color: var(--white); }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-text {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--silver);
+    line-height: 1.65;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--black); }
+
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .test-card {
+    background: var(--steel);
+    border: 1px solid var(--iron);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .test-quote {
+    font-size: 3rem;
+    color: var(--fire);
+    line-height: 1;
+    font-family: serif;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .test-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .test-author {
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+
+  .test-avatar {
+    width: 40px; height: 40px;
+    background: var(--fire);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .test-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .test-company {
+    font-size: 0.8rem;
+    color: var(--silver);
+    margin-top: 0.1rem;
+  }
+
+  .stars { color: var(--fire); font-size: 0.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
+
+  /* ── CTA BANNER ── */
+  #cta {
+    background: var(--fire);
+    padding: 5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 2px;
+    line-height: 1.05;
+  }
+
+  .cta-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(240,237,232,0.8);
+    margin-top: 0.6rem;
+  }
+
+  .btn-dark {
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-dark:hover { background: var(--iron); transform: translateY(-2px); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--steel); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .contact-info-item {
+    display: flex; gap: 1rem;
+    margin-bottom: 1.8rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--glow);
+    border: 1px solid rgba(232,93,4,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .contact-info-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--fire);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-info-val {
+    font-size: 0.95rem;
+    color: var(--light);
+    font-weight: 400;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .form-input, .form-textarea, .form-select {
+    background: var(--iron);
+    border: 1px solid var(--smoke);
+    color: var(--light);
+    padding: 0.8rem 1rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--fire);
+  }
+  .form-textarea { resize: vertical; min-height: 110px; }
+  .form-select option { background: var(--iron); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--smoke); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--iron);
+    padding: 2.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--fire); }
+
+  .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--fire); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--smoke);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 0 1.5rem; }
+    .hero-stats { right: 1.5rem; gap: 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-visual { height: 260px; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    #cta { padding: 3.5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">R. <span>Charles</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="spark-line"></div>
+    <div class="spark-line"></div>
+    <div class="spark-line"></div>
+    <div class="spark-line"></div>
+    <div class="spark-line"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Professional Welding Services</div>
+    <h1 class="hero-title">
+      BUILT<br>
+      TO <span class="fire-word">LAST</span><br>
+      FOREVER
+    </h1>
+    <p class="hero-sub">
+      Specialising in iron gates, fencing, railing, burglar bars, aluminum, and stainless steel fabrication. Quality craftsmanship — no job too big or too small.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">18+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">850+</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Certified Welders</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">OUR WELDING SERVICES</h2>
+    </div>
+    <p class="section-sub">From structural steel to custom metalwork — we deliver precision welds on every project, every time.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🏗️</span>
+      <span class="service-num">01</span>
+      <div class="service-name">Iron Gates &amp; Fencing</div>
+      <p class="service-desc">Custom iron gates and security fencing — designed, fabricated, and installed to your exact specifications.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <span class="service-num">02</span>
+      <div class="service-name">Railing &amp; Burglar Bars</div>
+      <p class="service-desc">Decorative and security railings, window burglar bars, and balcony guards — built strong, finished clean.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <span class="service-num">03</span>
+      <div class="service-name">Aluminum Fabrication</div>
+      <p class="service-desc">Lightweight, corrosion-resistant aluminum structures and components for residential and commercial projects.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛢️</span>
+      <span class="service-num">04</span>
+      <div class="service-name">Stainless Steel Work</div>
+      <p class="service-desc">Precision stainless steel fabrication — handrails, counters, kitchen equipment, and decorative fixtures.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔩</span>
+      <span class="service-num">05</span>
+      <div class="service-name">General Welding &amp; Repair</div>
+      <p class="service-desc">On-site and shop welding repairs for damaged metal structures, broken parts, and worn components.</p>
+    </div>
+    
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-visual">
+      <div class="why-block main">
+        <div class="block-label">R. Charles</div>
+        <div class="block-title">CRAFTSMANSHIP YOU CAN TRUST</div>
+      </div>
+      <div class="why-block accent">
+        <div class="accent-num">AWS</div>
+        <div class="accent-label">Certified Welders</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Why Choose Us</div>
+      <h2 class="section-title">QUALITY YOU CAN SEE IN EVERY WELD</h2>
+      <ul class="why-points">
+        <li class="why-point">
+          <div class="point-icon">🛡️</div>
+          <div>
+            <div class="point-title">AWS Certified Welders</div>
+            <p class="point-text">Every welder on our team holds AWS certification. That means your project meets industry standards and code requirements — guaranteed.</p>
+          </div>
+        </li>
+        <li class="why-point">
+          <div class="point-icon">⚡</div>
+          <div>
+            <div class="point-title">Fast Turnaround</div>
+            <p class="point-text">We respect your schedule. Most projects are quoted within 24 hours and completed on time. Emergency service available.</p>
+          </div>
+        </li>
+        <li class="why-point">
+          <div class="point-icon">🔍</div>
+          <div>
+            <div class="point-title">Rigorous Quality Control</div>
+            <p class="point-text">Every weld is inspected before it leaves our shop. We use visual inspection, dye penetrant, and ultrasonic testing depending on the application.</p>
+          </div>
+        </li>
+        <li class="why-point">
+          <div class="point-icon">📋</div>
+          <div>
+            <div class="point-title">Transparent Pricing</div>
+            <p class="point-text">No hidden fees, no surprises. We provide detailed quotes upfront so you know exactly what you're paying for before any work begins.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">FROM QUOTE TO COMPLETION</h2>
+    <p class="section-sub">A straightforward process built around your needs — clear communication at every step.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-dot">01</div>
+      <div class="step-title">Free Consultation</div>
+      <p class="step-text">Tell us about your project. We assess scope, materials, timeline, and any code requirements.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">02</div>
+      <div class="step-title">Detailed Quote</div>
+      <p class="step-text">Receive a transparent, itemised quote within 24 hours — no vague estimates, no hidden costs.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">03</div>
+      <div class="step-title">Expert Fabrication</div>
+      <p class="step-text">Our certified welders get to work using the right process and materials for your specific application.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-dot">04</div>
+      <div class="step-title">Inspection & Delivery</div>
+      <p class="step-text">We inspect every weld, then deliver on-site or in our shop — backed by our workmanship guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag">Client Reviews</div>
+  <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p class="test-text">R. Charles fabricated the entire steel frame for our new warehouse. Flawless work, on time, and under budget. We won't use anyone else.</p>
+      <div class="test-author">
+        <div class="test-avatar">RJ</div>
+        <div>
+          <div class="test-name">R. James</div>
+          <div class="test-company">Site Manager – StructBuild Ltd.</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p class="test-text">The custom staircase railings they made for our building are absolutely perfect. Smooth welds, clean finish, and exactly what we designed.</p>
+      <div class="test-author">
+        <div class="test-avatar">MC</div>
+        <div>
+          <div class="test-name">M. Charles</div>
+          <div class="test-company">Property Developer</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p class="test-text">Called them for an emergency pipe repair on a Saturday. They showed up, fixed it properly, and the price was completely fair. Highly recommend.</p>
+      <div class="test-author">
+        <div class="test-avatar">DT</div>
+        <div>
+          <div class="test-name">D. Thomas</div>
+          <div class="test-company">Plant Supervisor – PetroGroup</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta">
+  <div>
+    <h2 class="cta-title">READY TO START YOUR PROJECT?</h2>
+    <p class="cta-sub">Get a free, no-obligation quote within 24 hours.</p>
+  </div>
+  <a href="#contact" class="btn-dark">Request a Free Quote →</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">REQUEST A QUOTE</h2>
+
+  <div class="contact-grid">
+    <div>
+      <p class="section-sub" style="margin-bottom: 2.5rem;">Have a project in mind? Reach out and we'll get back to you within one business day with a detailed quote.</p>
+
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-val">442-5075 / 414-1532</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-val">Richardcharles96y@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-info-label">Location</div>
+          <div class="contact-info-val">Grenville, St. Andrews, Grenada</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-info-label">Hours</div>
+          <div class="contact-info-val">Mon – Fri: 9:00am – 5:00pm<br>Sat: 9:00am – 4:00pm</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" action="https://formspree.io/f/mpqknjpg" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="+1 (473) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Required</label>
+        <select class="form-select form-input">
+          <option value="">Select a service...</option>
+          <option>Iron Gates &amp; Fencing</option>
+          <option>Railing &amp; Burglar Bars</option>
+          <option>Aluminum Fabrication</option>
+          <option>Stainless Steel Work</option>
+          <option>General Welding &amp; Repair</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Project Details</label>
+        <textarea class="form-textarea" placeholder="Describe your project — materials, dimensions, timeline, or anything else we should know..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%; font-size:1rem; padding:1rem;">Send Request →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">R. <span>Charles</span> Welding</a>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 R. Charles Welding & Fabricating Service. All rights reserved.</div>
+</footer>
+
+<script>
+, 3000);
+}
+
+// Smooth active nav highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--fire)' : '';
+  });
+});
+</script>
+</body>
+</html>
